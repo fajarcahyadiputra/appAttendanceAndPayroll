@@ -107,4 +107,9 @@ class M_absen extends CI_Model
         $this->db->where('id', $id);
         return $this->db->update($this->table_absen,$data);
     }
+    public function editData($data, $id)
+    {
+        $this->db->where('id', $id);
+        return $this->db->update($this->table_absen, $data);
+    }
 }

@@ -1,12 +1,12 @@
-<?php 
+<?php
 if (!$this->session->userdata('username')) {
 
   redirect('auth');
 } else {
   if ($this->session->userdata("role") === "karyawan") {
     redirect("karyawan/homeKaryawan");
-  } 
-  ?>
+  }
+?>
   <!-- Container Fluid-->
   <div class="container-fluid" id="container-wrapper">
 
@@ -15,145 +15,61 @@ if (!$this->session->userdata('username')) {
         <h3 class="text-dark">DASHBOARD</h3>
       </div>
       <div class="card-body">
-        
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="panel-group">
-              <div class="panel panel-default">
-                <div class="panel-heading">Grafik Barang Masuk </div>
-                <canvas id="myChart" width="50" height="20"></canvas>
-              </div>
 
+        <div class="container-fluid">
+
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Jumblah Karyawan</h5>
+                  <p class="card-text"></p>
+                  <a href="#" class="btn btn-info"><?= $jumblahKaryawan ?></a>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <hr>
-        <hr>	
-        <hr>		
-        <div class="row">	
-          <div class="col-sm-12">
-            <div class="panel-group">
-              <div class="panel panel-default">
-                <div class="panel-heading">Grafik Barang Keluar</div>
-                <canvas id="mychart2" width="50" height="20"></canvas>
+            <div class="col-sm-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Jumblah Divisi</h5>
+                  <p class="card-text"></p>
+                  <a href="#" class="btn btn-info"><?= $jumblahDivisi ?></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Jumblah Admin</h5>
+                  <p class="card-text"></p>
+                  <a href="#" class="btn btn-info"><?= $jumblahAdmin ?></a>
+                </div>
               </div>
             </div>
           </div>
+
+          <hr>
+
+          <div class="jumbotron bg-white">
+            <h1 class="display-4">Hello, <?= $this->session->userdata('nama') ?>!</h1>
+            <p class="lead">Selamat datang di aplikasi penggajian dan absen.</p>
+            <hr class="my-4">
+            <p></p>
+            <a class="btn btn-primary btn-lg" href="<?php echo base_url('Absen/sudahAbsen') ?>" role="button">Lihat Absen</a>
+          </div>
+
         </div>
+
       </div>
-
     </div>
+
+  </div>
+  <!---Container Fluid-->
   </div>
 
-</div>
-<!---Container Fluid-->
-</div>
 
+  <script>
 
-<script>
-//   let labelMasuk = [
-// 	<?php 
-// 	foreach($chartMasuk as $labelMasuk =>  $cm){
-// 		echo "'$labelMasuk',";
-// 	}
-//  ?>
-//   ]
-
-//   let dataMasuk = [
-// 	<?php 
-// 	foreach($chartMasuk as $labelMasuk =>  $cm){
-// 		echo "'$cm',";
-// 	}
-//  ?>
-//   ]
-
-//  let warnaMasuk = [
-// 	<?php 
-// 	for($i = 0; $i < count($chartMasuk); $i++){
-// 		$index1 = rand(rand($i,100), 300);
-// 		$index2 = rand(rand($i,100), 200);
-// 		$index3 = rand(rand($i, 100), 100);
-// 		echo "'rgba({$index1},{$index2},{$index3}, 0.2)',";
-// 	}
-//  ?>
-//  ]
-
-//   var ctx = document.getElementById('myChart').getContext('2d');
-//   var myChart = new Chart(ctx, {
-// 			type: 'bar',
-// 			data: {
-// 				labels: labelMasuk,
-// 				datasets: [{
-// 					label: '#Grafik Barang Masuk',
-// 					data: dataMasuk,
-// 					backgroundColor: warnaMasuk,
-// 					borderWidth: 1
-// 				}]
-// 			},
-// 			options: {
-// 				scales: {
-// 					yAxes: [{
-// 						ticks: {
-// 							beginAtZero: true
-// 						}
-// 					}]
-// 				}
-// 			}
-// 		});
-// 	</script>
-
-// 	<script>
-
-// 		let labelKeluar = [
-// 			<?php 
-// 			foreach($chartKeluar as $labelKeluar =>  $ck){
-// 				echo "'$labelKeluar',";
-// 			}
-// 		?>
-// 		]
-
-// 		let dataKeluar = [
-// 			<?php 
-// 			foreach($chartKeluar as $labelKeluar =>  $ck){
-// 				echo "'$ck',";
-// 			}
-// 		?>
-// 		]
-
-// 		let warnaKeluar = [
-// 			<?php 
-// 			for($i = 0; $i < count($chartKeluar); $i++){
-// 				$index1 = rand(rand($i,100), 300);
-// 				$index2 = rand(rand($i,100), 200);
-// 				$index3 = rand(rand($i, 100), 100);
-// 				echo "'rgba({$index1},{$index2},{$index3}, 0.2)',";
-// 			}
-// 		?>
-// 		]
-
-// 		var ctx = document.getElementById('mychart2').getContext('2d');
-// 		var myChart = new Chart(ctx, {
-// 			type: 'bar',
-// 			data: {
-// 				labels: labelKeluar,
-// 				datasets: [{
-// 					label: '# Grafik Barang Masuk',
-// 					data: dataKeluar,
-// 					backgroundColor: warnaKeluar,
-// 					borderWidth: 1
-// 				}]
-// 			},
-// 			options: {
-// 				scales: {
-// 					yAxes: [{
-// 						ticks: {
-// 							beginAtZero: true
-// 						}
-// 					}]
-// 				}
-// 			}
-// 		});
-</script>
+  </script>
 
 <?php } ?>

@@ -113,4 +113,33 @@ class Absen extends CI_Controller
 
         echo json_encode($pesan);
     }
+    public function editData()
+    {
+        if($_SERVER['REQUEST_METHOD'] === "POST"){
+            if($this->input->post('getData')){
+                $data = $this->absen->getAbsen($this->input->post('id'));
+                echo json_encode($data);
+                die();
+            }
+
+            $data = $this->input->post();
+            unset($data['id']);
+            if($data['jam_masuk'] === '' ){
+                unset($data['jam_masuk']);
+            }
+
+            if($data['jam_keluar'] === '' ){
+                unset($data['jam_keluar']);
+            }
+            $edit = $this->absen->editData($data, $this->input->post('id'));
+            $pesan = [];
+            if($edit){
+                $pesan['edit'] = true;
+            }else{
+                $pesan['edit'] = false;
+            }
+    
+            echo json_encode($data);
+        }
+    }
 }

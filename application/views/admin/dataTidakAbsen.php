@@ -99,14 +99,14 @@ if (!$this->session->userdata('username')) {
 					},800);
 					if(result.tambah == true){
 						Swal.fire(
-							'Terhapus',
-							'Data Berhasil Di hapus',
+							'Terupdate',
+							'Karyawan Berhasil Di alphakan',
 							'success'
 							)
 					}else{
 						Swal.fire(
 							'Oops!',
-							'Data gagal Di Hapus.',
+							'Data gagal Di Alphakan.',
 							'error'
 							)
 					}
